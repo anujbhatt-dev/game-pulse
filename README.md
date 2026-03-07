@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GamePulse
 
-## Getting Started
+Server-side game health monitoring dashboard built with Next.js App Router.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js 16.1.6
+- React 19
+- TypeScript (strict)
+- Tailwind CSS v4
+- Framer Motion
+- Playwright (Chromium checks)
+
+## Run Locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000/dashboard`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Monitoring Flow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. URLs are loaded from `data/games.csv` (`url` column).
+2. `POST /api/monitor` runs Playwright checks in Node.js runtime.
+3. Failed URLs are written to `reports/failed-games-YYYY-MM-DD.csv`.
+4. Dashboard lists reports and allows viewing/downloading each report.
 
-## Learn More
+## API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+- `POST /api/monitor`
+- `GET /api/reports`
+- `GET /api/reports/[date]`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## CSV Files
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Source URLs: `data/games.csv`
+- Generated reports: `reports/failed-games-YYYY-MM-DD.csv`
 
-## Deploy on Vercel
+## Cron Support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Example daily run at 3:00 AM:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+0 3 * * * curl -X POST http://localhost:3000/api/monitor
+```
+
+## Notes
+
+- Monitoring is server-side only.
+- API routes explicitly run on Node.js runtime.
+- A file lock (`data/monitor.lock`) prevents overlapping monitor runs.

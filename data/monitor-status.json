@@ -1,0 +1,1264 @@
+{
+  "running": false,
+  "startedAt": "2026-03-07T14:33:23.646Z",
+  "finishedAt": "2026-03-07T18:04:42.714Z",
+  "totalUrls": 6408,
+  "checked": 6408,
+  "failed": 25,
+  "success": 6383,
+  "duration": 12679083,
+  "reportFile": "failed-games-2026-03-07.csv",
+  "error": null,
+  "logs": [
+    {
+      "timestamp": "2026-03-07T15:16:58.730Z",
+      "level": "info",
+      "message": "Checked 1325/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:17:50.751Z",
+      "level": "info",
+      "message": "Checked 1350/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:18:29.183Z",
+      "level": "info",
+      "message": "Checked 1375/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:19:07.875Z",
+      "level": "info",
+      "message": "Checked 1400/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:19:08.443Z",
+      "level": "info",
+      "message": "Starting batch 8 (1401-1600 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T15:19:59.129Z",
+      "level": "info",
+      "message": "Checked 1425/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:20:47.464Z",
+      "level": "info",
+      "message": "Checked 1450/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:21:45.850Z",
+      "level": "info",
+      "message": "Checked 1475/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:22:33.482Z",
+      "level": "info",
+      "message": "Checked 1500/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:23:12.616Z",
+      "level": "info",
+      "message": "Checked 1525/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:23:52.143Z",
+      "level": "info",
+      "message": "Checked 1550/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:24:34.917Z",
+      "level": "info",
+      "message": "Checked 1575/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:25:13.867Z",
+      "level": "info",
+      "message": "Checked 1600/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:25:14.591Z",
+      "level": "info",
+      "message": "Starting batch 9 (1601-1800 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T15:26:26.367Z",
+      "level": "info",
+      "message": "Checked 1625/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:27:31.943Z",
+      "level": "info",
+      "message": "Checked 1650/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:28:14.100Z",
+      "level": "info",
+      "message": "Checked 1675/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:28:51.953Z",
+      "level": "info",
+      "message": "Checked 1700/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:29:32.820Z",
+      "level": "info",
+      "message": "Checked 1725/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:30:10.814Z",
+      "level": "info",
+      "message": "Checked 1750/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:30:49.526Z",
+      "level": "info",
+      "message": "Checked 1775/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:31:36.894Z",
+      "level": "info",
+      "message": "Checked 1800/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:31:37.795Z",
+      "level": "info",
+      "message": "Starting batch 10 (1801-2000 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T15:33:05.981Z",
+      "level": "info",
+      "message": "Checked 1825/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:34:01.224Z",
+      "level": "info",
+      "message": "Checked 1850/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:34:39.628Z",
+      "level": "info",
+      "message": "Checked 1875/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:35:18.357Z",
+      "level": "info",
+      "message": "Checked 1900/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:35:56.953Z",
+      "level": "info",
+      "message": "Checked 1925/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:36:34.721Z",
+      "level": "info",
+      "message": "Checked 1950/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:37:14.757Z",
+      "level": "info",
+      "message": "Checked 1975/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:38:06.057Z",
+      "level": "warn",
+      "message": "Failed (1988/6408): https://goid.club/app/casino/slots/pascal-dragon's-force-10414"
+    },
+    {
+      "timestamp": "2026-03-07T15:38:10.723Z",
+      "level": "info",
+      "message": "Checked 2000/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:38:11.064Z",
+      "level": "info",
+      "message": "Starting batch 11 (2001-2200 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T15:39:35.532Z",
+      "level": "info",
+      "message": "Checked 2025/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:40:14.104Z",
+      "level": "info",
+      "message": "Checked 2050/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:40:51.679Z",
+      "level": "info",
+      "message": "Checked 2075/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:41:30.391Z",
+      "level": "info",
+      "message": "Checked 2100/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:42:09.039Z",
+      "level": "info",
+      "message": "Checked 2125/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:42:48.296Z",
+      "level": "info",
+      "message": "Checked 2150/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:43:39.760Z",
+      "level": "info",
+      "message": "Checked 2175/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:44:50.313Z",
+      "level": "info",
+      "message": "Checked 2200/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:44:55.406Z",
+      "level": "info",
+      "message": "Starting batch 12 (2201-2400 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T15:46:01.257Z",
+      "level": "info",
+      "message": "Checked 2225/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:46:38.931Z",
+      "level": "info",
+      "message": "Checked 2250/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:47:16.637Z",
+      "level": "info",
+      "message": "Checked 2275/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:47:54.358Z",
+      "level": "info",
+      "message": "Checked 2300/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:48:32.628Z",
+      "level": "info",
+      "message": "Checked 2325/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:49:40.011Z",
+      "level": "info",
+      "message": "Checked 2350/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:51:07.746Z",
+      "level": "info",
+      "message": "Checked 2375/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:51:42.232Z",
+      "level": "info",
+      "message": "Checked 2400/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:51:42.572Z",
+      "level": "info",
+      "message": "Starting batch 13 (2401-2600 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T15:52:33.164Z",
+      "level": "info",
+      "message": "Checked 2425/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:53:10.905Z",
+      "level": "info",
+      "message": "Checked 2450/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:53:48.648Z",
+      "level": "info",
+      "message": "Checked 2475/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:54:26.490Z",
+      "level": "info",
+      "message": "Checked 2500/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:55:05.845Z",
+      "level": "warn",
+      "message": "Failed (2514/6408): https://goid.club/app/casino/slots/evolution-gaming-free-bet-vip-blackjack-j"
+    },
+    {
+      "timestamp": "2026-03-07T15:55:09.239Z",
+      "level": "warn",
+      "message": "Failed (2516/6408): https://goid.club/app/casino/slots/evolution-gaming-free-bet-vip-blackjack-l"
+    },
+    {
+      "timestamp": "2026-03-07T15:55:18.098Z",
+      "level": "warn",
+      "message": "Failed (2519/6408): https://goid.club/app/casino/slots/evolution-gaming-free-bet-vip-blackjack-o"
+    },
+    {
+      "timestamp": "2026-03-07T15:55:19.791Z",
+      "level": "warn",
+      "message": "Failed (2520/6408): https://goid.club/app/casino/slots/evolution-gaming-free-bet-vip-blackjack-p"
+    },
+    {
+      "timestamp": "2026-03-07T15:55:19.844Z",
+      "level": "warn",
+      "message": "Failed (2515/6408): https://goid.club/app/casino/slots/evolution-gaming-free-bet-vip-blackjack-k"
+    },
+    {
+      "timestamp": "2026-03-07T15:55:20.006Z",
+      "level": "warn",
+      "message": "Failed (2518/6408): https://goid.club/app/casino/slots/evolution-gaming-free-bet-vip-blackjack-n"
+    },
+    {
+      "timestamp": "2026-03-07T15:55:22.674Z",
+      "level": "warn",
+      "message": "Failed (2513/6408): https://goid.club/app/casino/slots/evolution-gaming-free-bet-vip-blackjack-i"
+    },
+    {
+      "timestamp": "2026-03-07T15:55:48.978Z",
+      "level": "info",
+      "message": "Checked 2525/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:56:53.855Z",
+      "level": "info",
+      "message": "Checked 2550/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:57:36.290Z",
+      "level": "info",
+      "message": "Checked 2575/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:58:14.403Z",
+      "level": "info",
+      "message": "Checked 2600/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:58:14.916Z",
+      "level": "info",
+      "message": "Starting batch 14 (2601-2800 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T15:59:05.456Z",
+      "level": "info",
+      "message": "Checked 2625/6408"
+    },
+    {
+      "timestamp": "2026-03-07T15:59:43.254Z",
+      "level": "info",
+      "message": "Checked 2650/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:00:21.017Z",
+      "level": "info",
+      "message": "Checked 2675/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:01:00.779Z",
+      "level": "warn",
+      "message": "Failed (2689/6408): https://goid.club/app/casino/slots/playtech-giga-match-egypt-10018"
+    },
+    {
+      "timestamp": "2026-03-07T16:01:20.861Z",
+      "level": "warn",
+      "message": "Failed (2691/6408): https://goid.club/app/casino/slots/drgs-give-you-money"
+    },
+    {
+      "timestamp": "2026-03-07T16:01:32.814Z",
+      "level": "info",
+      "message": "Checked 2700/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:02:34.120Z",
+      "level": "info",
+      "message": "Checked 2725/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:03:16.614Z",
+      "level": "info",
+      "message": "Checked 2750/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:03:54.860Z",
+      "level": "info",
+      "message": "Checked 2775/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:04:37.828Z",
+      "level": "info",
+      "message": "Checked 2800/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:04:38.267Z",
+      "level": "info",
+      "message": "Starting batch 15 (2801-3000 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:05:28.548Z",
+      "level": "info",
+      "message": "Checked 2825/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:06:06.301Z",
+      "level": "info",
+      "message": "Checked 2850/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:07:02.074Z",
+      "level": "info",
+      "message": "Checked 2875/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:08:26.087Z",
+      "level": "info",
+      "message": "Checked 2900/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:09:19.914Z",
+      "level": "info",
+      "message": "Checked 2925/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:09:57.654Z",
+      "level": "info",
+      "message": "Checked 2950/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:10:35.928Z",
+      "level": "info",
+      "message": "Checked 2975/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:11:14.715Z",
+      "level": "info",
+      "message": "Checked 3000/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:11:15.396Z",
+      "level": "info",
+      "message": "Starting batch 16 (3001-3200 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:12:06.241Z",
+      "level": "info",
+      "message": "Checked 3025/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:12:44.467Z",
+      "level": "info",
+      "message": "Checked 3050/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:13:53.590Z",
+      "level": "info",
+      "message": "Checked 3075/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:14:44.956Z",
+      "level": "warn",
+      "message": "Failed (3089/6408): https://goid.club/app/casino/slots/gamzix-hot-patrick"
+    },
+    {
+      "timestamp": "2026-03-07T16:15:11.959Z",
+      "level": "info",
+      "message": "Checked 3100/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:15:46.973Z",
+      "level": "info",
+      "message": "Checked 3125/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:16:24.825Z",
+      "level": "info",
+      "message": "Checked 3150/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:17:02.798Z",
+      "level": "info",
+      "message": "Checked 3175/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:17:41.820Z",
+      "level": "info",
+      "message": "Checked 3200/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:17:42.127Z",
+      "level": "info",
+      "message": "Starting batch 17 (3201-3400 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:18:33.121Z",
+      "level": "info",
+      "message": "Checked 3225/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:19:10.859Z",
+      "level": "info",
+      "message": "Checked 3250/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:20:20.317Z",
+      "level": "info",
+      "message": "Checked 3275/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:21:39.129Z",
+      "level": "info",
+      "message": "Checked 3300/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:22:16.939Z",
+      "level": "info",
+      "message": "Checked 3325/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:23:00.729Z",
+      "level": "info",
+      "message": "Checked 3350/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:23:39.045Z",
+      "level": "info",
+      "message": "Checked 3375/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:24:16.760Z",
+      "level": "info",
+      "message": "Checked 3400/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:24:17.519Z",
+      "level": "info",
+      "message": "Starting batch 18 (3401-3600 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:25:08.877Z",
+      "level": "info",
+      "message": "Checked 3425/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:26:35.301Z",
+      "level": "info",
+      "message": "Checked 3450/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:27:44.578Z",
+      "level": "info",
+      "message": "Checked 3475/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:28:26.820Z",
+      "level": "info",
+      "message": "Checked 3500/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:29:04.802Z",
+      "level": "info",
+      "message": "Checked 3525/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:29:46.227Z",
+      "level": "info",
+      "message": "Checked 3550/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:30:25.039Z",
+      "level": "info",
+      "message": "Checked 3575/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:31:03.049Z",
+      "level": "info",
+      "message": "Checked 3600/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:31:03.937Z",
+      "level": "info",
+      "message": "Starting batch 19 (3601-3800 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:32:48.428Z",
+      "level": "info",
+      "message": "Checked 3625/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:34:12.218Z",
+      "level": "info",
+      "message": "Checked 3650/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:34:47.765Z",
+      "level": "info",
+      "message": "Checked 3675/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:35:27.230Z",
+      "level": "info",
+      "message": "Checked 3700/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:36:05.663Z",
+      "level": "info",
+      "message": "Checked 3725/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:36:44.843Z",
+      "level": "info",
+      "message": "Checked 3750/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:37:24.363Z",
+      "level": "info",
+      "message": "Checked 3775/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:38:24.010Z",
+      "level": "info",
+      "message": "Checked 3800/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:38:24.500Z",
+      "level": "info",
+      "message": "Starting batch 20 (3801-4000 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:40:03.321Z",
+      "level": "info",
+      "message": "Checked 3825/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:40:44.025Z",
+      "level": "info",
+      "message": "Checked 3850/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:41:25.639Z",
+      "level": "info",
+      "message": "Checked 3875/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:42:03.644Z",
+      "level": "info",
+      "message": "Checked 3900/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:42:44.583Z",
+      "level": "info",
+      "message": "Checked 3925/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:43:25.945Z",
+      "level": "info",
+      "message": "Checked 3950/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:44:24.963Z",
+      "level": "info",
+      "message": "Checked 3975/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:45:19.214Z",
+      "level": "info",
+      "message": "Checked 4000/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:45:19.756Z",
+      "level": "info",
+      "message": "Starting batch 21 (4001-4200 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:46:44.907Z",
+      "level": "info",
+      "message": "Checked 4025/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:47:23.721Z",
+      "level": "info",
+      "message": "Checked 4050/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:48:05.402Z",
+      "level": "info",
+      "message": "Checked 4075/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:48:44.516Z",
+      "level": "info",
+      "message": "Checked 4100/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:49:25.060Z",
+      "level": "info",
+      "message": "Checked 4125/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:50:19.804Z",
+      "level": "info",
+      "message": "Checked 4150/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:51:33.825Z",
+      "level": "info",
+      "message": "Checked 4175/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:52:19.607Z",
+      "level": "info",
+      "message": "Checked 4200/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:52:23.018Z",
+      "level": "info",
+      "message": "Starting batch 22 (4201-4400 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:53:25.076Z",
+      "level": "info",
+      "message": "Checked 4225/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:54:03.872Z",
+      "level": "info",
+      "message": "Checked 4250/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:54:41.817Z",
+      "level": "info",
+      "message": "Checked 4275/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:55:20.382Z",
+      "level": "info",
+      "message": "Checked 4300/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:56:16.941Z",
+      "level": "info",
+      "message": "Checked 4325/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:57:24.849Z",
+      "level": "info",
+      "message": "Checked 4350/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:58:21.165Z",
+      "level": "info",
+      "message": "Checked 4375/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:59:04.756Z",
+      "level": "info",
+      "message": "Checked 4400/6408"
+    },
+    {
+      "timestamp": "2026-03-07T16:59:05.063Z",
+      "level": "info",
+      "message": "Starting batch 23 (4401-4600 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T16:59:55.443Z",
+      "level": "info",
+      "message": "Checked 4425/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:00:33.166Z",
+      "level": "info",
+      "message": "Checked 4450/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:01:11.171Z",
+      "level": "info",
+      "message": "Checked 4475/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:02:14.474Z",
+      "level": "info",
+      "message": "Checked 4500/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:03:12.968Z",
+      "level": "info",
+      "message": "Checked 4525/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:04:05.404Z",
+      "level": "info",
+      "message": "Checked 4550/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:05:04.137Z",
+      "level": "info",
+      "message": "Checked 4575/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:05:42.986Z",
+      "level": "info",
+      "message": "Checked 4600/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:05:43.443Z",
+      "level": "info",
+      "message": "Starting batch 24 (4601-4800 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:06:34.166Z",
+      "level": "info",
+      "message": "Checked 4625/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:07:11.887Z",
+      "level": "info",
+      "message": "Checked 4650/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:08:21.057Z",
+      "level": "info",
+      "message": "Checked 4675/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:08:22.601Z",
+      "level": "warn",
+      "message": "Failed (4679/6408): https://goid.club/app/casino/slots/habanero-rainbowmania"
+    },
+    {
+      "timestamp": "2026-03-07T17:09:11.615Z",
+      "level": "info",
+      "message": "Checked 4700/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:09:49.547Z",
+      "level": "info",
+      "message": "Checked 4725/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:10:42.490Z",
+      "level": "info",
+      "message": "Checked 4750/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:11:21.899Z",
+      "level": "info",
+      "message": "Checked 4775/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:11:59.634Z",
+      "level": "info",
+      "message": "Checked 4800/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:11:59.955Z",
+      "level": "info",
+      "message": "Starting batch 25 (4801-5000 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:12:50.676Z",
+      "level": "info",
+      "message": "Checked 4825/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:13:45.491Z",
+      "level": "info",
+      "message": "Checked 4850/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:14:43.446Z",
+      "level": "info",
+      "message": "Checked 4875/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:15:35.567Z",
+      "level": "info",
+      "message": "Checked 4900/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:16:14.718Z",
+      "level": "info",
+      "message": "Checked 4925/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:17:06.174Z",
+      "level": "info",
+      "message": "Checked 4950/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:17:49.921Z",
+      "level": "info",
+      "message": "Checked 4975/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:18:29.553Z",
+      "level": "info",
+      "message": "Checked 5000/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:18:30.134Z",
+      "level": "info",
+      "message": "Starting batch 26 (5001-5200 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:19:12.314Z",
+      "level": "warn",
+      "message": "Failed (5011/6408): https://goid.club/app/casino/slots/evolution-gaming-salon-privé-blackjack-m"
+    },
+    {
+      "timestamp": "2026-03-07T17:19:13.313Z",
+      "level": "warn",
+      "message": "Failed (5009/6408): https://goid.club/app/casino/slots/evolution-gaming-salon-privé-blackjack-k"
+    },
+    {
+      "timestamp": "2026-03-07T17:19:18.728Z",
+      "level": "warn",
+      "message": "Failed (5012/6408): https://goid.club/app/casino/slots/evolution-gaming-salon-privé-blackjack-n"
+    },
+    {
+      "timestamp": "2026-03-07T17:19:18.729Z",
+      "level": "warn",
+      "message": "Failed (5010/6408): https://goid.club/app/casino/slots/evolution-gaming-salon-privé-blackjack-l"
+    },
+    {
+      "timestamp": "2026-03-07T17:19:18.730Z",
+      "level": "warn",
+      "message": "Failed (5016/6408): https://goid.club/app/casino/slots/evolution-gaming-salon-privé-roulette"
+    },
+    {
+      "timestamp": "2026-03-07T17:19:48.898Z",
+      "level": "info",
+      "message": "Checked 5025/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:20:49.214Z",
+      "level": "info",
+      "message": "Checked 5050/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:21:33.463Z",
+      "level": "info",
+      "message": "Checked 5075/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:22:14.032Z",
+      "level": "info",
+      "message": "Checked 5100/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:22:52.477Z",
+      "level": "info",
+      "message": "Checked 5125/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:23:30.310Z",
+      "level": "info",
+      "message": "Checked 5150/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:24:10.142Z",
+      "level": "info",
+      "message": "Checked 5175/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:25:22.784Z",
+      "level": "info",
+      "message": "Checked 5200/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:25:26.373Z",
+      "level": "info",
+      "message": "Starting batch 27 (5201-5400 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:26:56.577Z",
+      "level": "info",
+      "message": "Checked 5225/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:27:34.398Z",
+      "level": "info",
+      "message": "Checked 5250/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:28:12.041Z",
+      "level": "info",
+      "message": "Checked 5275/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:28:49.946Z",
+      "level": "info",
+      "message": "Checked 5300/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:29:27.637Z",
+      "level": "info",
+      "message": "Checked 5325/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:30:29.299Z",
+      "level": "info",
+      "message": "Checked 5350/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:31:29.610Z",
+      "level": "info",
+      "message": "Checked 5375/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:32:29.038Z",
+      "level": "info",
+      "message": "Checked 5400/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:32:29.646Z",
+      "level": "info",
+      "message": "Starting batch 28 (5401-5600 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:33:20.007Z",
+      "level": "info",
+      "message": "Checked 5425/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:33:57.811Z",
+      "level": "info",
+      "message": "Checked 5450/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:34:35.621Z",
+      "level": "info",
+      "message": "Checked 5475/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:35:13.477Z",
+      "level": "info",
+      "message": "Checked 5500/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:36:12.543Z",
+      "level": "info",
+      "message": "Checked 5525/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:37:25.387Z",
+      "level": "info",
+      "message": "Checked 5550/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:38:08.278Z",
+      "level": "info",
+      "message": "Checked 5575/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:38:59.271Z",
+      "level": "info",
+      "message": "Checked 5600/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:39:00.138Z",
+      "level": "info",
+      "message": "Starting batch 29 (5601-5800 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:39:50.561Z",
+      "level": "info",
+      "message": "Checked 5625/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:40:28.397Z",
+      "level": "info",
+      "message": "Checked 5650/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:41:06.078Z",
+      "level": "info",
+      "message": "Checked 5675/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:41:57.861Z",
+      "level": "warn",
+      "message": "Failed (5702/6408): https://goid.club/app/casino/slots/rich88-thor-2"
+    },
+    {
+      "timestamp": "2026-03-07T17:41:59.178Z",
+      "level": "info",
+      "message": "Checked 5700/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:43:09.046Z",
+      "level": "info",
+      "message": "Checked 5725/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:43:56.132Z",
+      "level": "info",
+      "message": "Checked 5750/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:44:34.879Z",
+      "level": "info",
+      "message": "Checked 5775/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:45:13.660Z",
+      "level": "info",
+      "message": "Checked 5800/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:45:13.989Z",
+      "level": "info",
+      "message": "Starting batch 30 (5801-6000 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:46:04.477Z",
+      "level": "info",
+      "message": "Checked 5825/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:46:42.198Z",
+      "level": "info",
+      "message": "Checked 5850/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:47:35.910Z",
+      "level": "info",
+      "message": "Checked 5875/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:48:30.872Z",
+      "level": "info",
+      "message": "Checked 5900/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:49:19.402Z",
+      "level": "info",
+      "message": "Checked 5925/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:49:57.524Z",
+      "level": "info",
+      "message": "Checked 5950/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:50:37.097Z",
+      "level": "info",
+      "message": "Checked 5975/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:51:15.825Z",
+      "level": "info",
+      "message": "Checked 6000/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:51:16.237Z",
+      "level": "info",
+      "message": "Starting batch 31 (6001-6200 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:52:06.714Z",
+      "level": "info",
+      "message": "Checked 6025/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:52:44.439Z",
+      "level": "info",
+      "message": "Checked 6050/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:54:00.782Z",
+      "level": "info",
+      "message": "Checked 6075/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:55:10.618Z",
+      "level": "info",
+      "message": "Checked 6100/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:55:49.539Z",
+      "level": "info",
+      "message": "Checked 6125/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:56:28.899Z",
+      "level": "info",
+      "message": "Checked 6150/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:57:06.668Z",
+      "level": "info",
+      "message": "Checked 6175/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:57:46.785Z",
+      "level": "info",
+      "message": "Checked 6200/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:57:47.324Z",
+      "level": "info",
+      "message": "Starting batch 32 (6201-6400 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T17:58:49.879Z",
+      "level": "info",
+      "message": "Checked 6225/6408"
+    },
+    {
+      "timestamp": "2026-03-07T17:59:58.394Z",
+      "level": "info",
+      "message": "Checked 6250/6408"
+    },
+    {
+      "timestamp": "2026-03-07T18:00:50.196Z",
+      "level": "info",
+      "message": "Checked 6275/6408"
+    },
+    {
+      "timestamp": "2026-03-07T18:01:30.223Z",
+      "level": "info",
+      "message": "Checked 6300/6408"
+    },
+    {
+      "timestamp": "2026-03-07T18:02:09.367Z",
+      "level": "info",
+      "message": "Checked 6325/6408"
+    },
+    {
+      "timestamp": "2026-03-07T18:02:51.235Z",
+      "level": "info",
+      "message": "Checked 6350/6408"
+    },
+    {
+      "timestamp": "2026-03-07T18:03:30.254Z",
+      "level": "info",
+      "message": "Checked 6375/6408"
+    },
+    {
+      "timestamp": "2026-03-07T18:04:07.138Z",
+      "level": "warn",
+      "message": "Failed (6400/6408): https://goid.club/app/casino/slots/macaw-gaming-zodiac-adventure"
+    },
+    {
+      "timestamp": "2026-03-07T18:04:13.849Z",
+      "level": "info",
+      "message": "Starting batch 33 (6401-6408 of 6408)"
+    },
+    {
+      "timestamp": "2026-03-07T18:04:32.165Z",
+      "level": "info",
+      "message": "Checked 6408/6408"
+    },
+    {
+      "timestamp": "2026-03-07T18:04:42.714Z",
+      "level": "info",
+      "message": "Completed. Failed: 25, Success: 6383"
+    }
+  ]
+}

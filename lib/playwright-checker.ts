@@ -15,7 +15,7 @@ export interface UrlCheckerConfig {
 
 const DEFAULT_CONFIG: UrlCheckerConfig = {
   navigationTimeoutMs: 30_000,
-  redirectWaitMs: 12_000,
+  redirectWaitMs: 20_000,
   userAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
 };
@@ -51,6 +51,24 @@ async function runSingleCheck(
   });
 
   const page = await context.newPage();
+  const originalComparableUrl = normalizeComparableUrl(url);
+  let redirectedToHome = false;
+
+  const markRedirectIfHome = (candidateUrl: string) => {
+    if (!endsWithHome(candidateUrl)) {
+      return;
+    }
+
+    if (normalizeComparableUrl(candidateUrl) !== originalComparableUrl) {
+      redirectedToHome = true;
+    }
+  };
+
+  page.on("framenavigated", (frame) => {
+    if (frame === page.mainFrame()) {
+      markRedirectIfHome(frame.url());
+    }
+  });
 
   try {
     try {
@@ -58,20 +76,19 @@ async function runSingleCheck(
         waitUntil: "domcontentloaded",
         timeout: config.navigationTimeoutMs,
       });
-
-      await page.waitForURL(
-        (currentUrl) => {
-          return endsWithHome(currentUrl.toString());
-        },
-        { timeout: config.redirectWaitMs },
-      );
     } catch {
       // Ignore navigation timing issues: only confirmed home redirect is a failure.
     }
 
     const finalUrl = page.url();
-    const redirectedToHome =
-      endsWithHome(finalUrl) && normalizeComparableUrl(finalUrl) !== normalizeComparableUrl(url);
+    markRedirectIfHome(finalUrl);
+
+    const checkUntil = Date.now() + config.redirectWaitMs;
+
+    while (!redirectedToHome && Date.now() < checkUntil) {
+      await page.waitForTimeout(500);
+      markRedirectIfHome(page.url());
+    }
 
     return {
       failed: redirectedToHome,

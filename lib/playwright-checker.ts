@@ -129,24 +129,23 @@ export async function checkUrlWithRetry(
   };
 
   const firstAttempt = await runSingleCheck(browser, url, mergedConfig);
-
-  if (!firstAttempt.failed) {
-    return firstAttempt;
-  }
-
   const secondAttempt = await runSingleCheck(browser, url, mergedConfig);
 
-  if (!secondAttempt.failed) {
+  // Strict policy: if either attempt detects redirect to /home, mark as failed.
+  if (firstAttempt.failed || secondAttempt.failed) {
+    const preferred = firstAttempt.failed ? firstAttempt : secondAttempt;
     return {
-      failed: false,
-      finalUrl: secondAttempt.finalUrl,
-      homeSeenUrl: null,
+      failed: true,
+      finalUrl: preferred.finalUrl,
+      homeSeenUrl: preferred.homeSeenUrl,
       attempts: 2,
     };
   }
 
   return {
-    ...secondAttempt,
+    failed: false,
+    finalUrl: secondAttempt.finalUrl,
+    homeSeenUrl: null,
     attempts: 2,
   };
 }

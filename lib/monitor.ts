@@ -290,12 +290,13 @@ export async function runMonitor(): Promise<MonitorRunResult> {
     return result;
   }
 
-  const browser = await launchMonitorBrowser();
-
+  let browser: import("playwright-core").Browser | null = null;
   let checked = 0;
   const failures: FailedGameEntry[] = [];
 
   try {
+    browser = await launchMonitorBrowser();
+
     for (let start = 0; start < urls.length; start += BATCH_SIZE) {
       const batch = urls.slice(start, start + BATCH_SIZE);
       tracker.recordInfo(
@@ -331,6 +332,8 @@ export async function runMonitor(): Promise<MonitorRunResult> {
     await tracker.fail(urls.length, checked, failures.length, message);
     throw error;
   } finally {
-    await browser.close().catch(() => undefined);
+    if (browser) {
+      await browser.close().catch(() => undefined);
+    }
   }
 }

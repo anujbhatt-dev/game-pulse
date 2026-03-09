@@ -1,32 +1,32 @@
 {
   "running": false,
-  "startedAt": "2026-03-09T04:03:45.585Z",
-  "finishedAt": "2026-03-09T04:04:02.703Z",
+  "startedAt": "2026-03-09T04:13:46.240Z",
+  "finishedAt": "2026-03-09T04:14:05.802Z",
   "totalUrls": 2,
   "checked": 2,
   "failed": 1,
   "success": 1,
-  "duration": 17119,
+  "duration": 19562,
   "reportFile": "failed-games-2026-03-09.csv",
   "error": null,
   "logs": [
     {
-      "timestamp": "2026-03-09T04:03:45.585Z",
+      "timestamp": "2026-03-09T04:13:46.240Z",
       "level": "info",
       "message": "Monitor started for 2 URLs"
     },
     {
-      "timestamp": "2026-03-09T04:03:45.890Z",
+      "timestamp": "2026-03-09T04:13:46.456Z",
       "level": "info",
       "message": "Starting batch 1 (1-2 of 2)"
     },
     {
-      "timestamp": "2026-03-09T04:03:57.974Z",
+      "timestamp": "2026-03-09T04:14:00.791Z",
       "level": "warn",
       "message": "Failed (2/2): https://goid.club/app/casino/slots/rt-10"
     },
     {
-      "timestamp": "2026-03-09T04:04:02.703Z",
+      "timestamp": "2026-03-09T04:14:05.802Z",
       "level": "info",
       "message": "Completed. Failed: 1, Success: 1"
     }

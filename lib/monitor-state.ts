@@ -1,7 +1,7 @@
 import "server-only";
 
 import { promises as fs } from "node:fs";
-import { getMonitorStatusPath, getRuntimeDataDir } from "@/lib/storage-paths";
+import { getMonitorLockPath, getMonitorStatusPath, getRuntimeDataDir } from "@/lib/storage-paths";
 
 import type { MonitorLogEntry, MonitorLogLevel, MonitorStatus } from "@/types/report";
 
@@ -125,7 +125,33 @@ export async function readMonitorStatus(): Promise<MonitorStatus> {
 
   try {
     const content = await fs.readFile(STATUS_PATH, "utf8");
-    return sanitizeStatus(JSON.parse(content));
+    const status = sanitizeStatus(JSON.parse(content));
+
+    if (status.running) {
+      try {
+        await fs.access(getMonitorLockPath());
+      } catch {
+        const recoveredStatus: MonitorStatus = {
+          ...status,
+          running: false,
+          finishedAt: status.finishedAt ?? new Date().toISOString(),
+          error: status.error ?? "Previous monitor run was interrupted.",
+          logs: [
+            ...status.logs,
+            {
+              timestamp: new Date().toISOString(),
+              level: "warn" as const,
+              message: "Recovered stale running state (lock file missing).",
+            },
+          ].slice(-MAX_LOGS),
+        };
+
+        await writeMonitorStatus(recoveredStatus);
+        return recoveredStatus;
+      }
+    }
+
+    return status;
   } catch {
     return createDefaultStatus();
   }

@@ -217,6 +217,7 @@ async function processBatch(
   const failures: FailedGameEntry[] = [];
   let checked = 0;
   let cursor = 0;
+  const shouldLogEachUrl = totalUrls <= 50;
 
   const workerCount = Math.min(CONCURRENCY, urls.length);
 
@@ -238,8 +239,19 @@ async function processBatch(
 
         if (result.failed) {
           failures.push(createFailure(url));
+          if (shouldLogEachUrl) {
+            tracker.recordWarning(
+              url,
+              `redirected_to_home (final=${result.finalUrl}, homeSeen=${result.homeSeenUrl ?? "unknown"}, attempts=${result.attempts})`,
+            );
+          }
           tracker.recordCheck(globalIndex, totalUrls, true, url);
         } else {
+          if (shouldLogEachUrl) {
+            tracker.recordInfo(
+              `Working (${globalIndex}/${totalUrls}): ${url} (final=${result.finalUrl}, attempts=${result.attempts})`,
+            );
+          }
           tracker.recordCheck(globalIndex, totalUrls, false, url);
         }
       } catch (error) {

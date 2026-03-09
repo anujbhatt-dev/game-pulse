@@ -1,10 +1,13 @@
 import "server-only";
 
 import type { Browser } from "playwright-core";
+import type { Request } from "playwright-core";
 
 export interface UrlCheckResult {
   failed: boolean;
   finalUrl: string;
+  homeSeenUrl: string | null;
+  attempts: number;
 }
 
 export interface UrlCheckerConfig {
@@ -15,7 +18,7 @@ export interface UrlCheckerConfig {
 
 const DEFAULT_CONFIG: UrlCheckerConfig = {
   navigationTimeoutMs: 30_000,
-  redirectWaitMs: 20_000,
+  redirectWaitMs: 30_000,
   userAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
 };
@@ -52,7 +55,7 @@ async function runSingleCheck(
 
   const page = await context.newPage();
   const originalComparableUrl = normalizeComparableUrl(url);
-  let redirectedToHome = false;
+  let homeSeenUrl: string | null = null;
 
   const markRedirectIfHome = (candidateUrl: string) => {
     if (!endsWithHome(candidateUrl)) {
@@ -60,7 +63,9 @@ async function runSingleCheck(
     }
 
     if (normalizeComparableUrl(candidateUrl) !== originalComparableUrl) {
-      redirectedToHome = true;
+      if (!homeSeenUrl) {
+        homeSeenUrl = candidateUrl;
+      }
     }
   };
 
@@ -71,8 +76,10 @@ async function runSingleCheck(
   });
 
   try {
+    let navigationResponse: Awaited<ReturnType<typeof page.goto>> | null = null;
+
     try {
-      await page.goto(url, {
+      navigationResponse = await page.goto(url, {
         waitUntil: "domcontentloaded",
         timeout: config.navigationTimeoutMs,
       });
@@ -80,19 +87,30 @@ async function runSingleCheck(
       // Ignore navigation timing issues: only confirmed home redirect is a failure.
     }
 
+    if (navigationResponse) {
+      let currentRequest: Request | null = navigationResponse.request();
+
+      while (currentRequest) {
+        markRedirectIfHome(currentRequest.url());
+        currentRequest = currentRequest.redirectedFrom();
+      }
+    }
+
     const finalUrl = page.url();
     markRedirectIfHome(finalUrl);
 
     const checkUntil = Date.now() + config.redirectWaitMs;
 
-    while (!redirectedToHome && Date.now() < checkUntil) {
+    while (!homeSeenUrl && Date.now() < checkUntil) {
       await page.waitForTimeout(500);
       markRedirectIfHome(page.url());
     }
 
     return {
-      failed: redirectedToHome,
+      failed: Boolean(homeSeenUrl),
       finalUrl,
+      homeSeenUrl,
+      attempts: 1,
     };
   } finally {
     await page.close().catch(() => undefined);
@@ -122,8 +140,13 @@ export async function checkUrlWithRetry(
     return {
       failed: false,
       finalUrl: secondAttempt.finalUrl,
+      homeSeenUrl: null,
+      attempts: 2,
     };
   }
 
-  return secondAttempt;
+  return {
+    ...secondAttempt,
+    attempts: 2,
+  };
 }

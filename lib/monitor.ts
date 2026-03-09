@@ -1,5 +1,8 @@
 import "server-only";
 
+import path from "node:path";
+import { createRequire } from "node:module";
+
 import chromiumPackage from "@sparticuz/chromium";
 import { chromium } from "playwright-core";
 
@@ -15,6 +18,7 @@ const BATCH_DELAY_MIN_MS = 300;
 const BATCH_DELAY_MAX_MS = 900;
 const CHECK_LOG_INTERVAL = 25;
 const STATUS_PERSIST_INTERVAL = 10;
+const require = createRequire(import.meta.url);
 
 function wait(milliseconds: number): Promise<void> {
   return new Promise((resolve) => {
@@ -39,7 +43,10 @@ async function launchMonitorBrowser(): Promise<import("playwright-core").Browser
 
   try {
     if (isServerlessLinux) {
-      const executablePath = await chromiumPackage.executablePath();
+      const chromiumPackageJsonPath = require.resolve("@sparticuz/chromium/package.json");
+      const chromiumPackageDir = path.dirname(chromiumPackageJsonPath);
+      const chromiumBinDir = path.join(chromiumPackageDir, "bin");
+      const executablePath = await chromiumPackage.executablePath(chromiumBinDir);
 
       return await chromium.launch({
         headless: true,

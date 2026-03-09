@@ -24,7 +24,7 @@ Open `http://localhost:3000/dashboard`.
 
 1. URLs are loaded from `data/games.csv` (`url` column).
 2. `POST /api/monitor` runs Playwright checks in Node.js runtime.
-3. Failed URLs are written to `reports/failed-games-YYYY-MM-DD.csv`.
+3. Failed URLs are written to `data/reports/failed-games-YYYY-MM-DD.csv`.
 4. Dashboard lists reports and allows viewing/downloading each report.
 
 ## API Endpoints
@@ -36,7 +36,7 @@ Open `http://localhost:3000/dashboard`.
 ## CSV Files
 
 - Source URLs: `data/games.csv`
-- Generated reports: `reports/failed-games-YYYY-MM-DD.csv`
+- Generated reports: `data/reports/failed-games-YYYY-MM-DD.csv`
 
 ## Cron Support
 
@@ -50,4 +50,10 @@ Example daily run at 3:00 AM:
 
 - Monitoring is server-side only.
 - API routes explicitly run on Node.js runtime.
-- A file lock (`data/monitor.lock`) prevents overlapping monitor runs.
+- A lock file prevents overlapping monitor runs.
+
+## Production Playwright Notes
+
+- Browser install is handled by `postinstall`:
+  - `PLAYWRIGHT_BROWSERS_PATH=0 playwright install chromium`
+- In serverless production (for example Vercel), runtime writes go to `/tmp/game-pulse-data`.

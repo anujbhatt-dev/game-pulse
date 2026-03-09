@@ -33,6 +33,25 @@ function createFailure(url: string): FailedGameEntry {
   };
 }
 
+async function launchMonitorBrowser(): Promise<import("playwright").Browser> {
+  try {
+    return await chromium.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown browser launch error";
+
+    if (message.includes("Executable doesn't exist")) {
+      throw new Error(
+        "Playwright Chromium executable is missing in runtime. Ensure deployment runs `PLAYWRIGHT_BROWSERS_PATH=0 playwright install chromium` during build.",
+      );
+    }
+
+    throw error;
+  }
+}
+
 class MonitorStatusTracker {
   private status: MonitorStatus;
   private writeQueue: Promise<void> = Promise.resolve();
@@ -207,7 +226,7 @@ export async function runMonitor(): Promise<MonitorRunResult> {
     return result;
   }
 
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchMonitorBrowser();
 
   let checked = 0;
   const failures: FailedGameEntry[] = [];

@@ -1,7 +1,7 @@
 import "server-only";
 
+import { existsSync, readdirSync } from "node:fs";
 import path from "node:path";
-import { createRequire } from "node:module";
 
 import chromiumPackage from "@sparticuz/chromium";
 import { chromium } from "playwright-core";
@@ -18,7 +18,6 @@ const BATCH_DELAY_MIN_MS = 300;
 const BATCH_DELAY_MAX_MS = 900;
 const CHECK_LOG_INTERVAL = 25;
 const STATUS_PERSIST_INTERVAL = 10;
-const require = createRequire(import.meta.url);
 
 function wait(milliseconds: number): Promise<void> {
   return new Promise((resolve) => {
@@ -38,15 +37,60 @@ function createFailure(url: string): FailedGameEntry {
   };
 }
 
+function resolveChromiumBinDirFromFs(): string | null {
+  const directPath = path.join(process.cwd(), "node_modules", "@sparticuz", "chromium", "bin");
+
+  if (existsSync(directPath)) {
+    return directPath;
+  }
+
+  const pnpmRoot = path.join(process.cwd(), "node_modules", ".pnpm");
+
+  if (!existsSync(pnpmRoot)) {
+    return null;
+  }
+
+  try {
+    const entries = readdirSync(pnpmRoot, { withFileTypes: true });
+
+    for (const entry of entries) {
+      if (!entry.isDirectory()) {
+        continue;
+      }
+
+      if (!entry.name.startsWith("@sparticuz+chromium@")) {
+        continue;
+      }
+
+      const candidate = path.join(
+        pnpmRoot,
+        entry.name,
+        "node_modules",
+        "@sparticuz",
+        "chromium",
+        "bin",
+      );
+
+      if (existsSync(candidate)) {
+        return candidate;
+      }
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
 async function launchMonitorBrowser(): Promise<import("playwright-core").Browser> {
   const isServerlessLinux = process.platform === "linux" && Boolean(process.env.VERCEL);
 
   try {
     if (isServerlessLinux) {
-      const chromiumEntryPath = require.resolve("@sparticuz/chromium");
-      const chromiumPackageDir = path.resolve(path.dirname(chromiumEntryPath), "..", "..");
-      const chromiumBinDir = path.join(chromiumPackageDir, "bin");
-      const executablePath = await chromiumPackage.executablePath(chromiumBinDir);
+      const chromiumBinDir = resolveChromiumBinDirFromFs();
+      const executablePath = chromiumBinDir
+        ? await chromiumPackage.executablePath(chromiumBinDir)
+        : await chromiumPackage.executablePath();
 
       return await chromium.launch({
         headless: true,

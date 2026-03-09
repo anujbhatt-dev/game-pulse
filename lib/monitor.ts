@@ -1,6 +1,6 @@
 import "server-only";
 
-import { chromium } from "playwright";
+import { chromium } from "playwright-core";
 
 import { readGamesCSV, writeFailedCSV } from "@/lib/csv";
 import { appendStatusLog, createRunningStatus, writeMonitorStatus } from "@/lib/monitor-state";
@@ -33,7 +33,7 @@ function createFailure(url: string): FailedGameEntry {
   };
 }
 
-async function launchMonitorBrowser(): Promise<import("playwright").Browser> {
+async function launchMonitorBrowser(): Promise<import("playwright-core").Browser> {
   try {
     return await chromium.launch({
       headless: true,
@@ -44,7 +44,7 @@ async function launchMonitorBrowser(): Promise<import("playwright").Browser> {
 
     if (message.includes("Executable doesn't exist")) {
       throw new Error(
-        "Playwright Chromium executable is missing in runtime. Ensure deployment runs `PLAYWRIGHT_BROWSERS_PATH=0 playwright install chromium` during build.",
+        "Playwright Chromium executable is missing in runtime. Ensure deployment runs `PLAYWRIGHT_BROWSERS_PATH=0 playwright install --only-shell chromium` during build.",
       );
     }
 
@@ -147,7 +147,7 @@ async function processBatch(
   urls: string[],
   startIndex: number,
   totalUrls: number,
-  browser: import("playwright").Browser,
+  browser: import("playwright-core").Browser,
   tracker: MonitorStatusTracker,
 ): Promise<{ checked: number; failures: FailedGameEntry[] }> {
   const failures: FailedGameEntry[] = [];

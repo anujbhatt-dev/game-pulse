@@ -1,6 +1,6 @@
 import "server-only";
 
-import type { Browser } from "playwright";
+import type { Browser } from "playwright-core";
 
 export interface UrlCheckResult {
   failed: boolean;

@@ -1,9 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  outputFileTracingIncludes: {
-    "/api/monitor/route": ["./node_modules/playwright-core/.local-browsers/chromium_headless_shell-*/**"],
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

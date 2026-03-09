@@ -54,7 +54,5 @@ Example daily run at 3:00 AM:
 
 ## Production Playwright Notes
 
-- Browser install is handled by `postinstall`:
-  - `PLAYWRIGHT_BROWSERS_PATH=0 playwright install --only-shell chromium`
-- In serverless production (for example Vercel), runtime writes go to `/tmp/game-pulse-data`.
-- Only `api/monitor` traces the Playwright headless shell binary to keep other functions small.
+- In Vercel/serverless Linux, monitor uses `@sparticuz/chromium` runtime executable with `playwright-core`.
+- In serverless production, runtime writes go to `/tmp/game-pulse-data`.

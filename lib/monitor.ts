@@ -1,5 +1,6 @@
 import "server-only";
 
+import chromiumPackage from "@sparticuz/chromium";
 import { chromium } from "playwright-core";
 
 import { readGamesCSV, writeFailedCSV } from "@/lib/csv";
@@ -34,7 +35,19 @@ function createFailure(url: string): FailedGameEntry {
 }
 
 async function launchMonitorBrowser(): Promise<import("playwright-core").Browser> {
+  const isServerlessLinux = process.platform === "linux" && Boolean(process.env.VERCEL);
+
   try {
+    if (isServerlessLinux) {
+      const executablePath = await chromiumPackage.executablePath();
+
+      return await chromium.launch({
+        headless: true,
+        executablePath,
+        args: [...chromiumPackage.args, "--no-sandbox", "--disable-setuid-sandbox"],
+      });
+    }
+
     return await chromium.launch({
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
@@ -44,7 +57,7 @@ async function launchMonitorBrowser(): Promise<import("playwright-core").Browser
 
     if (message.includes("Executable doesn't exist")) {
       throw new Error(
-        "Playwright Chromium executable is missing in runtime. Ensure deployment runs `PLAYWRIGHT_BROWSERS_PATH=0 playwright install --only-shell chromium` during build.",
+        "Chromium executable is missing in runtime. Ensure Vercel deployment includes @sparticuz/chromium and rebuild without cache.",
       );
     }
 

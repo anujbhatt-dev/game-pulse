@@ -6,17 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "postinstall": "PLAYWRIGHT_BROWSERS_PATH=0 playwright install --only-shell chromium"
+    "lint": "eslint"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^143.0.4",
     "@tabler/icons-react": "^3.37.1",
     "csv-parser": "^3.2.0",
     "date-fns": "^4.1.0",
     "fast-csv": "^5.0.5",
     "framer-motion": "^12.34.3",
     "next": "16.1.6",
-    "playwright": "^1.58.2",
     "playwright-core": "^1.58.2",
     "react": "19.2.3",
     "react-dom": "19.2.3"

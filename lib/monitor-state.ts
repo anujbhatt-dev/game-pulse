@@ -1,12 +1,12 @@
 import "server-only";
 
 import { promises as fs } from "node:fs";
-import path from "node:path";
+import { getMonitorStatusPath, getRuntimeDataDir } from "@/lib/storage-paths";
 
 import type { MonitorLogEntry, MonitorLogLevel, MonitorStatus } from "@/types/report";
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const STATUS_PATH = path.join(DATA_DIR, "monitor-status.json");
+const DATA_DIR = getRuntimeDataDir();
+const STATUS_PATH = getMonitorStatusPath();
 const MAX_LOGS = 250;
 
 function createDefaultStatus(): MonitorStatus {

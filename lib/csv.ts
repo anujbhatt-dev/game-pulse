@@ -9,11 +9,16 @@ import csvParser from "csv-parser";
 import { writeToStream } from "fast-csv";
 import { format } from "date-fns";
 
+import {
+  getGamesCsvPath,
+  getReportsDir as getReportsDirectoryPath,
+  getRuntimeDataDir,
+  getRuntimeGamesCsvFallbackPath,
+} from "@/lib/storage-paths";
 import type { FailedGameEntry, ReportSummary } from "@/types/report";
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const REPORTS_DIR = path.join(DATA_DIR, "reports");
-const GAMES_CSV_PATH = path.join(DATA_DIR, "games.csv");
+const DATA_DIR = getRuntimeDataDir();
+const REPORTS_DIR = getReportsDirectoryPath();
 const REPORT_FILE_PATTERN = /^failed-games-(\d{4}-\d{2}-\d{2})\.csv$/;
 
 interface RawCsvRow {
@@ -36,19 +41,34 @@ export async function ensureStorageDirectories(): Promise<void> {
   await Promise.all([fs.mkdir(DATA_DIR, { recursive: true }), fs.mkdir(REPORTS_DIR, { recursive: true })]);
 }
 
-export async function readGamesCSV(): Promise<string[]> {
-  await ensureStorageDirectories();
+async function resolveGamesCsvPath(): Promise<string | null> {
+  const primary = getGamesCsvPath();
+  const fallback = getRuntimeGamesCsvFallbackPath();
+  const candidates = primary === fallback ? [primary] : [primary, fallback];
 
-  try {
-    await fs.access(GAMES_CSV_PATH);
-  } catch {
+  for (const candidate of candidates) {
+    try {
+      await fs.access(candidate);
+      return candidate;
+    } catch {
+      // Keep trying fallbacks.
+    }
+  }
+
+  return null;
+}
+
+export async function readGamesCSV(): Promise<string[]> {
+  const gamesCsvPath = await resolveGamesCsvPath();
+
+  if (!gamesCsvPath) {
     return [];
   }
 
   return new Promise<string[]>((resolve, reject) => {
     const urls: string[] = [];
 
-    createReadStream(GAMES_CSV_PATH)
+    createReadStream(gamesCsvPath)
       .on("error", reject)
       .pipe(csvParser())
       .on("data", (row: RawCsvRow) => {

@@ -43,8 +43,8 @@ async function launchMonitorBrowser(): Promise<import("playwright-core").Browser
 
   try {
     if (isServerlessLinux) {
-      const chromiumPackageJsonPath = require.resolve("@sparticuz/chromium/package.json");
-      const chromiumPackageDir = path.dirname(chromiumPackageJsonPath);
+      const chromiumEntryPath = require.resolve("@sparticuz/chromium");
+      const chromiumPackageDir = path.resolve(path.dirname(chromiumEntryPath), "..", "..");
       const chromiumBinDir = path.join(chromiumPackageDir, "bin");
       const executablePath = await chromiumPackage.executablePath(chromiumBinDir);
 

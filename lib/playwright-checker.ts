@@ -7,7 +7,7 @@ import type { MonitorFailureReason } from "@/types/report";
 export interface UrlCheckResult {
   failed: boolean;
   finalUrl: string;
-  homeSeenUrl: string | null;
+  redirectedUrl: string | null;
   attempts: number;
   failureReason: MonitorFailureReason | null;
   httpStatus: number | null;
@@ -72,23 +72,23 @@ async function runSingleCheck(
 
   const page = await context.newPage();
   const originalComparableUrl = normalizeComparableUrl(url);
-  let homeSeenUrl: string | null = null;
+  let redirectedUrl: string | null = null;
 
-  const markRedirectIfHome = (candidateUrl: string) => {
-    if (!endsWithHome(candidateUrl)) {
+  const markRedirectIfDifferent = (candidateUrl: string) => {
+    if (!candidateUrl) {
       return;
     }
 
     if (normalizeComparableUrl(candidateUrl) !== originalComparableUrl) {
-      if (!homeSeenUrl) {
-        homeSeenUrl = candidateUrl;
+      if (!redirectedUrl) {
+        redirectedUrl = candidateUrl;
       }
     }
   };
 
   page.on("framenavigated", (frame) => {
     if (frame === page.mainFrame()) {
-      markRedirectIfHome(frame.url());
+      markRedirectIfDifferent(frame.url());
     }
   });
 
@@ -109,31 +109,35 @@ async function runSingleCheck(
       let currentRequest: Request | null = navigationResponse.request();
 
       while (currentRequest) {
-        markRedirectIfHome(currentRequest.url());
+        markRedirectIfDifferent(currentRequest.url());
         currentRequest = currentRequest.redirectedFrom();
       }
     }
 
     const finalUrl = page.url();
-    markRedirectIfHome(finalUrl);
+    markRedirectIfDifferent(finalUrl);
     const httpStatus = navigationResponse?.status() ?? null;
 
     const checkUntil = Date.now() + config.redirectWaitMs;
 
-    while (!homeSeenUrl && Date.now() < checkUntil) {
+    while (!redirectedUrl && Date.now() < checkUntil) {
       await page.waitForTimeout(500);
-      markRedirectIfHome(page.url());
+      markRedirectIfDifferent(page.url());
     }
 
     const latestUrl = page.url();
 
-    if (homeSeenUrl) {
+    if (normalizeComparableUrl(latestUrl) !== originalComparableUrl) {
+      const failureReason: MonitorFailureReason = endsWithHome(latestUrl)
+        ? "redirected_to_home"
+        : "redirected_to_other_page";
+
       return {
         failed: true,
         finalUrl: latestUrl,
-        homeSeenUrl,
+        redirectedUrl: latestUrl,
         attempts: 1,
-        failureReason: "redirected_to_home",
+        failureReason,
         httpStatus,
         errorMessage: null,
       };
@@ -143,7 +147,7 @@ async function runSingleCheck(
       return {
         failed: true,
         finalUrl: latestUrl,
-        homeSeenUrl: null,
+        redirectedUrl: null,
         attempts: 1,
         failureReason: "http_error",
         httpStatus,
@@ -161,7 +165,7 @@ async function runSingleCheck(
       return {
         failed: true,
         finalUrl: finalNavigationUrl,
-        homeSeenUrl: null,
+        redirectedUrl,
         attempts: 1,
         failureReason: "navigation_error",
         httpStatus,
@@ -172,7 +176,7 @@ async function runSingleCheck(
     return {
       failed: false,
       finalUrl: latestUrl,
-      homeSeenUrl: null,
+      redirectedUrl: null,
       attempts: 1,
       failureReason: null,
       httpStatus,
@@ -197,20 +201,25 @@ export async function checkUrlWithRetry(
   const firstAttempt = await runSingleCheck(browser, url, mergedConfig);
   const secondAttempt = await runSingleCheck(browser, url, mergedConfig);
 
-  // Strict policy: one confirmed redirect to /home is enough to fail the URL.
+  // Strict policy: one confirmed redirect away from the requested game URL is enough to fail the URL.
   if (
     firstAttempt.failureReason === "redirected_to_home" ||
-    secondAttempt.failureReason === "redirected_to_home"
+    firstAttempt.failureReason === "redirected_to_other_page" ||
+    secondAttempt.failureReason === "redirected_to_home" ||
+    secondAttempt.failureReason === "redirected_to_other_page"
   ) {
     const preferred =
-      firstAttempt.failureReason === "redirected_to_home" ? firstAttempt : secondAttempt;
+      firstAttempt.failureReason === "redirected_to_home" ||
+      firstAttempt.failureReason === "redirected_to_other_page"
+        ? firstAttempt
+        : secondAttempt;
 
     return {
       failed: true,
       finalUrl: preferred.finalUrl,
-      homeSeenUrl: preferred.homeSeenUrl,
+      redirectedUrl: preferred.redirectedUrl,
       attempts: 2,
-      failureReason: "redirected_to_home",
+      failureReason: preferred.failureReason,
       httpStatus: preferred.httpStatus,
       errorMessage: preferred.errorMessage,
     };
@@ -223,7 +232,7 @@ export async function checkUrlWithRetry(
     return {
       failed: true,
       finalUrl: preferred.finalUrl,
-      homeSeenUrl: preferred.homeSeenUrl,
+      redirectedUrl: preferred.redirectedUrl,
       attempts: 2,
       failureReason: preferred.failureReason,
       httpStatus: preferred.httpStatus,
@@ -234,7 +243,7 @@ export async function checkUrlWithRetry(
   return {
     failed: false,
     finalUrl: secondAttempt.finalUrl,
-    homeSeenUrl: null,
+    redirectedUrl: null,
     attempts: 2,
     failureReason: null,
     httpStatus: secondAttempt.httpStatus,

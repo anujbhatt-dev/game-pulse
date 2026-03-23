@@ -35,6 +35,8 @@ function parseFailureReason(value: string | undefined): MonitorFailureReason | n
   switch (cleaned) {
     case "redirected_to_home":
       return "redirected_to_home";
+    case "redirected_to_other_page":
+      return "redirected_to_other_page";
     case "http_error":
       return "http_error";
     case "navigation_error":

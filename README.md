@@ -18,7 +18,7 @@ pnpm install
 pnpm dev
 ```
 
-Open `http://localhost:3000/dashboard`.
+Open `http://localhost:3003/dashboard`.
 
 ## Monitoring Flow
 
@@ -37,14 +37,14 @@ Open `http://localhost:3000/dashboard`.
 
 - Source URLs: `data/games.csv`
 - Generated reports: `data/reports/failed-games-YYYY-MM-DD.csv`
-- Report reasons: `redirected_to_home`, `http_error`, `navigation_error`, `check_error`
+- Report reasons: `redirected_to_home`, `redirected_to_other_page`, `http_error`, `navigation_error`, `check_error`
 
 ## Cron Support
 
 Example daily run at 3:00 AM:
 
 ```bash
-0 3 * * * curl -X POST http://localhost:3000/api/monitor
+0 3 * * * curl -X POST http://localhost:3003/api/monitor
 ```
 
 ## Notes

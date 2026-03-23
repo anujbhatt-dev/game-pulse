@@ -247,7 +247,7 @@ async function processBatch(
             result.errorMessage,
             result.httpStatus ? `status=${result.httpStatus}` : null,
             result.finalUrl ? `final=${result.finalUrl}` : null,
-            result.homeSeenUrl ? `homeSeen=${result.homeSeenUrl}` : null,
+            result.redirectedUrl ? `redirected=${result.redirectedUrl}` : null,
             `attempts=${result.attempts}`,
           ].filter(Boolean);
           const failureDetails = detailParts.join(", ");

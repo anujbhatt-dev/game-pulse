@@ -1,4 +1,9 @@
-export type MonitorFailureReason = "redirected_to_home" | "http_error" | "navigation_error" | "check_error";
+export type MonitorFailureReason =
+  | "redirected_to_home"
+  | "redirected_to_other_page"
+  | "http_error"
+  | "navigation_error"
+  | "check_error";
 export type MonitorLogLevel = "info" | "warn" | "error";
 
 export interface FailedGameEntry {

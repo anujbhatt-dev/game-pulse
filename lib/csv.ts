@@ -15,7 +15,7 @@ import {
   getRuntimeDataDir,
   getRuntimeGamesCsvFallbackPath,
 } from "@/lib/storage-paths";
-import type { FailedGameEntry, ReportSummary } from "@/types/report";
+import type { FailedGameEntry, MonitorFailureReason, ReportSummary } from "@/types/report";
 
 const DATA_DIR = getRuntimeDataDir();
 const REPORTS_DIR = getReportsDirectoryPath();
@@ -25,7 +25,25 @@ interface RawCsvRow {
   timestamp?: string;
   url?: string;
   reason?: string;
+  details?: string;
   [key: string]: string | undefined;
+}
+
+function parseFailureReason(value: string | undefined): MonitorFailureReason | null {
+  const cleaned = value?.trim();
+
+  switch (cleaned) {
+    case "redirected_to_home":
+      return "redirected_to_home";
+    case "http_error":
+      return "http_error";
+    case "navigation_error":
+      return "navigation_error";
+    case "check_error":
+      return "check_error";
+    default:
+      return null;
+  }
 }
 
 function isHttpUrl(value: string): boolean {
@@ -110,9 +128,10 @@ export async function writeFailedCSV(failedUrls: FailedGameEntry[], date = new D
         timestamp: entry.timestamp,
         url: entry.url,
         reason: entry.reason,
+        details: entry.details ?? "",
       })),
       {
-        headers: ["timestamp", "url", "reason"],
+        headers: ["timestamp", "url", "reason", "details"],
         alwaysWriteHeaders: true,
         includeEndRowDelimiter: true,
       },
@@ -142,7 +161,7 @@ export async function readFailedCSV(filePath: string): Promise<FailedGameEntry[]
           return;
         }
 
-        const reason = row.reason?.trim() === "redirected_to_home" ? "redirected_to_home" : null;
+        const reason = parseFailureReason(row.reason);
 
         if (!reason) {
           return;
@@ -152,6 +171,7 @@ export async function readFailedCSV(filePath: string): Promise<FailedGameEntry[]
           timestamp: row.timestamp?.trim() || new Date(0).toISOString(),
           url,
           reason,
+          details: row.details?.trim() || null,
         });
       })
       .on("end", () => {

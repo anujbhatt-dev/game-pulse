@@ -1,44 +1,44 @@
 {
   "running": false,
-  "startedAt": "2026-03-09T05:51:00.392Z",
-  "finishedAt": "2026-03-09T05:52:06.920Z",
+  "startedAt": "2026-03-23T16:03:56.259Z",
+  "finishedAt": "2026-03-23T16:05:06.367Z",
   "totalUrls": 2,
   "checked": 2,
-  "failed": 1,
-  "success": 1,
-  "duration": 66529,
-  "reportFile": "failed-games-2026-03-09.csv",
+  "failed": 0,
+  "success": 2,
+  "duration": 70109,
+  "reportFile": "failed-games-2026-03-23.csv",
   "error": null,
   "logs": [
     {
-      "timestamp": "2026-03-09T05:51:00.392Z",
+      "timestamp": "2026-03-23T16:03:56.259Z",
       "level": "info",
       "message": "Monitor started for 2 URLs"
     },
     {
-      "timestamp": "2026-03-09T05:51:00.592Z",
+      "timestamp": "2026-03-23T16:03:56.898Z",
       "level": "info",
       "message": "Starting batch 1 (1-2 of 2)"
     },
     {
-      "timestamp": "2026-03-09T05:51:41.208Z",
-      "level": "warn",
-      "message": "Warning for https://goid.club/app/casino/slots/rt-10: redirected_to_home (final=https://goid.club/app/casino/slots/rt-10, homeSeen=https://goid.club/app/home, attempts=2)"
-    },
-    {
-      "timestamp": "2026-03-09T05:51:41.208Z",
-      "level": "warn",
-      "message": "Failed (2/2): https://goid.club/app/casino/slots/rt-10"
-    },
-    {
-      "timestamp": "2026-03-09T05:52:06.913Z",
+      "timestamp": "2026-03-23T16:05:06.049Z",
       "level": "info",
       "message": "Working (1/2): https://goid.club/app/casino/slots/boldplay-10-hands-video-poker-10591 (final=https://goid.club/app/casino/slots/boldplay-10-hands-video-poker-10591, attempts=2)"
     },
     {
-      "timestamp": "2026-03-09T05:52:06.920Z",
+      "timestamp": "2026-03-23T16:05:06.364Z",
       "level": "info",
-      "message": "Completed. Failed: 1, Success: 1"
+      "message": "Working (2/2): https://goid.club/app/casino/slots/fantasma-seven-and-gems (final=https://goid.club/app/provider/fantasma, attempts=2)"
+    },
+    {
+      "timestamp": "2026-03-23T16:05:06.364Z",
+      "level": "info",
+      "message": "Checked 2/2"
+    },
+    {
+      "timestamp": "2026-03-23T16:05:06.367Z",
+      "level": "info",
+      "message": "Completed. Failed: 0, Success: 2"
     }
   ]
 }

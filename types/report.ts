@@ -1,10 +1,11 @@
-export type MonitorFailureReason = "redirected_to_home";
+export type MonitorFailureReason = "redirected_to_home" | "http_error" | "navigation_error" | "check_error";
 export type MonitorLogLevel = "info" | "warn" | "error";
 
 export interface FailedGameEntry {
   timestamp: string;
   url: string;
   reason: MonitorFailureReason;
+  details?: string | null;
 }
 
 export interface MonitorRunResult {

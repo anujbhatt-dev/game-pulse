@@ -27,7 +27,9 @@ export default function ReportViewer({ date, isOpen, isLoading, entries, onClose
 
     return entries.filter((entry) => {
       return (
-        entry.url.toLowerCase().includes(searchValue) || entry.reason.toLowerCase().includes(searchValue)
+        entry.url.toLowerCase().includes(searchValue) ||
+        entry.reason.toLowerCase().includes(searchValue) ||
+        (entry.details?.toLowerCase().includes(searchValue) ?? false)
       );
     });
   }, [entries, search]);
@@ -102,6 +104,7 @@ export default function ReportViewer({ date, isOpen, isLoading, entries, onClose
                         {entry.url}
                       </a>
                       <p className="mt-1 text-xs text-red-300">{entry.reason}</p>
+                      {entry.details ? <p className="mt-1 break-all text-xs text-zinc-400">{entry.details}</p> : null}
                     </li>
                   ))}
                 </ul>

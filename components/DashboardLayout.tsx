@@ -257,7 +257,7 @@ export default function DashboardLayout({ initialData }: DashboardLayoutProps) {
 
         <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <StatsCard title="Total URLs" value={totalUrlsForCard} description="Loaded from data/games.csv" icon={IconDeviceGamepad2} />
-          <StatsCard title="Failed Today" value={failedToday} description="Redirected to /home today" icon={IconAlertTriangle} />
+          <StatsCard title="Failed Today" value={failedToday} description="URLs that failed checks today" icon={IconAlertTriangle} />
           <StatsCard
             title="Last Run Time"
             value={lastRunAt ? format(new Date(lastRunAt), "yyyy-MM-dd HH:mm") : "N/A"}

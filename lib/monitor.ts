@@ -29,11 +29,16 @@ function randomBatchDelayMs(): number {
   return Math.floor(Math.random() * (BATCH_DELAY_MAX_MS - BATCH_DELAY_MIN_MS + 1)) + BATCH_DELAY_MIN_MS;
 }
 
-function createFailure(url: string): FailedGameEntry {
+function createFailure(
+  url: string,
+  reason: FailedGameEntry["reason"],
+  details: string | null = null,
+): FailedGameEntry {
   return {
     timestamp: new Date().toISOString(),
     url,
-    reason: "redirected_to_home",
+    reason,
+    details,
   };
 }
 
@@ -238,13 +243,20 @@ async function processBatch(
         const result = await checkUrlWithRetry(browser, url);
 
         if (result.failed) {
-          failures.push(createFailure(url));
-          if (shouldLogEachUrl) {
-            tracker.recordWarning(
-              url,
-              `redirected_to_home (final=${result.finalUrl}, homeSeen=${result.homeSeenUrl ?? "unknown"}, attempts=${result.attempts})`,
-            );
-          }
+          const detailParts = [
+            result.errorMessage,
+            result.httpStatus ? `status=${result.httpStatus}` : null,
+            result.finalUrl ? `final=${result.finalUrl}` : null,
+            result.homeSeenUrl ? `homeSeen=${result.homeSeenUrl}` : null,
+            `attempts=${result.attempts}`,
+          ].filter(Boolean);
+          const failureDetails = detailParts.join(", ");
+
+          failures.push(createFailure(url, result.failureReason ?? "check_error", failureDetails || null));
+          tracker.recordWarning(
+            url,
+            `${result.failureReason ?? "check_error"} (${failureDetails || "no details"})`,
+          );
           tracker.recordCheck(globalIndex, totalUrls, true, url);
         } else {
           if (shouldLogEachUrl) {
@@ -258,7 +270,8 @@ async function processBatch(
         const message = error instanceof Error ? error.message : "Unknown check error";
         console.warn(`Check warning for ${url}: ${message}`);
         tracker.recordWarning(url, message);
-        tracker.recordCheck(globalIndex, totalUrls, false, url);
+        failures.push(createFailure(url, "check_error", message));
+        tracker.recordCheck(globalIndex, totalUrls, true, url);
       } finally {
         checked += 1;
       }

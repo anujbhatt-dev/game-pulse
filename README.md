@@ -37,6 +37,7 @@ Open `http://localhost:3000/dashboard`.
 
 - Source URLs: `data/games.csv`
 - Generated reports: `data/reports/failed-games-YYYY-MM-DD.csv`
+- Report reasons: `redirected_to_home`, `http_error`, `navigation_error`, `check_error`
 
 ## Cron Support
 

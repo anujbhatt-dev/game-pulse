@@ -87,8 +87,38 @@ function resolveChromiumBinDirFromFs(): string | null {
   return null;
 }
 
+function resolveLinuxChromiumExecutablePath(): string | null {
+  const configuredPath =
+    process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH?.trim() ||
+    process.env.CHROMIUM_EXECUTABLE_PATH?.trim() ||
+    null;
+
+  if (configuredPath && existsSync(configuredPath)) {
+    return configuredPath;
+  }
+
+  const candidates = [
+    "/usr/bin/google-chrome-stable",
+    "/usr/bin/google-chrome",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+    "/snap/bin/chromium",
+    "/usr/bin/microsoft-edge",
+    "/usr/bin/microsoft-edge-stable",
+  ];
+
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
 async function launchMonitorBrowser(): Promise<import("playwright-core").Browser> {
   const isServerlessLinux = process.platform === "linux" && Boolean(process.env.VERCEL);
+  const isLinux = process.platform === "linux";
 
   try {
     if (isServerlessLinux) {
@@ -104,6 +134,22 @@ async function launchMonitorBrowser(): Promise<import("playwright-core").Browser
       });
     }
 
+    if (isLinux) {
+      const executablePath = resolveLinuxChromiumExecutablePath();
+
+      if (!executablePath) {
+        throw new Error(
+          "No Linux Chromium executable found. Install chromium or google-chrome on the VPS, or set PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH.",
+        );
+      }
+
+      return await chromium.launch({
+        headless: true,
+        executablePath,
+        args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+      });
+    }
+
     return await chromium.launch({
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
@@ -114,6 +160,12 @@ async function launchMonitorBrowser(): Promise<import("playwright-core").Browser
     if (message.includes("Executable doesn't exist")) {
       throw new Error(
         "Chromium executable is missing in runtime. Ensure Vercel deployment includes @sparticuz/chromium and rebuild without cache.",
+      );
+    }
+
+    if (message.includes("No Linux Chromium executable found")) {
+      throw new Error(
+        "Chromium executable is missing on the VPS. Install chromium/google-chrome or set PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH.",
       );
     }
 

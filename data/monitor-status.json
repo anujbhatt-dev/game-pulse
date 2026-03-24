@@ -1,44 +1,44 @@
 {
-  "running": false,
-  "startedAt": "2026-03-23T16:32:39.289Z",
-  "finishedAt": "2026-03-23T16:33:55.571Z",
-  "totalUrls": 2,
-  "checked": 2,
-  "failed": 1,
-  "success": 1,
-  "duration": 76283,
-  "reportFile": "failed-games-2026-03-23.csv",
+  "running": true,
+  "startedAt": "2026-03-24T03:59:50.757Z",
+  "finishedAt": null,
+  "totalUrls": 199,
+  "checked": 10,
+  "failed": 2,
+  "success": 8,
+  "duration": 0,
+  "reportFile": null,
   "error": null,
   "logs": [
     {
-      "timestamp": "2026-03-23T16:32:39.289Z",
+      "timestamp": "2026-03-24T03:59:50.757Z",
       "level": "info",
-      "message": "Monitor started for 2 URLs"
+      "message": "Monitor started for 199 URLs"
     },
     {
-      "timestamp": "2026-03-23T16:32:39.835Z",
+      "timestamp": "2026-03-24T03:59:51.246Z",
       "level": "info",
-      "message": "Starting batch 1 (1-2 of 2)"
+      "message": "Starting batch 1 (1-199 of 199)"
     },
     {
-      "timestamp": "2026-03-23T16:33:01.473Z",
+      "timestamp": "2026-03-24T04:00:31.958Z",
       "level": "warn",
-      "message": "Warning for https://goid.club/app/casino/slots/fantasma-seven-and-gems: redirected_to_other_page (status=200, final=https://goid.club/app/provider/fantasma, redirected=https://goid.club/app/provider/fantasma, attempts=2)"
+      "message": "Warning for https://goid.club/app/casino/slots/rt-10: redirected_to_home (status=200, final=https://goid.club/app/home, redirected=https://goid.club/app/home, attempts=2)"
     },
     {
-      "timestamp": "2026-03-23T16:33:01.473Z",
+      "timestamp": "2026-03-24T04:00:31.958Z",
       "level": "warn",
-      "message": "Failed (2/2): https://goid.club/app/casino/slots/fantasma-seven-and-gems"
+      "message": "Failed (2/199): https://goid.club/app/casino/slots/rt-10"
     },
     {
-      "timestamp": "2026-03-23T16:33:55.565Z",
-      "level": "info",
-      "message": "Working (1/2): https://goid.club/app/casino/slots/boldplay-10-hands-video-poker-10591 (final=https://goid.club/app/casino/slots/boldplay-10-hands-video-poker-10591, attempts=2)"
+      "timestamp": "2026-03-24T04:01:56.802Z",
+      "level": "warn",
+      "message": "Warning for https://goid.club/app/casino/slots/betcore-gaming-100-ice-pepper-f11629: redirected_to_home (status=200, final=https://goid.club/app/home, redirected=https://goid.club/app/home, attempts=2)"
     },
     {
-      "timestamp": "2026-03-23T16:33:55.571Z",
-      "level": "info",
-      "message": "Completed. Failed: 1, Success: 1"
+      "timestamp": "2026-03-24T04:01:56.802Z",
+      "level": "warn",
+      "message": "Failed (14/199): https://goid.club/app/casino/slots/betcore-gaming-100-ice-pepper-f11629"
     }
   ]
 }
